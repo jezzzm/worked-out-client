@@ -26,8 +26,8 @@ const ExerciseWithAlternatives = ({primary, alternatives}) => alternatives ? (
   <details className="exercise-with-alts">
     <summary><Exercise {...primary} /></summary>
     {alternatives.map((alternative, index) => (
-      <div key={`alternative-${index}`} style={{ marginLeft: '1rem' }}>
-        <em>Alternative {index + 1}: <Exercise {...alternative} /></em>
+      <div key={`alternative-${index}`} className="alt-wrapper">
+        <em><strong className="alt-number">Alt #{index + 1}:</strong> <Exercise {...alternative} /></em>
       </div>
     ))}
   </details>
