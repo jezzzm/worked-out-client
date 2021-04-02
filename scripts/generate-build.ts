@@ -21,7 +21,7 @@ const generateBuild = async (): Promise<void> => {
     process.exit(1);
   }
 
-  fs.copy('./public/index.html', './dist/index.html', (err) => {
+  fs.copy('./public', './dist', (err) => {
     if (err) return console.error(err);
     return null;
   }

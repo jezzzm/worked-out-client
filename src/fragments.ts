@@ -33,3 +33,31 @@ export const GET_EXERCISE = gql`
     }
   }
 `;
+
+export const GET_ROUTINE = gql`
+  ${GET_EXERCISE}
+  fragment getRoutine on Routine {
+    date
+    category
+    summary
+    name
+    coach
+    sections {
+      name
+      timing {
+        duration
+        repeats
+        method
+      }
+      components {
+        isRx
+        primary {
+          ...getExercise
+        }
+        alternatives {
+          ...getExercise
+        }
+      }
+    }
+  }
+`;

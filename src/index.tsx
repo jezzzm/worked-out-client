@@ -3,9 +3,9 @@ import ReactDOM from 'react-dom';
 import { Switch, Route, BrowserRouter as Router } from 'react-router-dom';
 import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
 
-import Header from './header';
-import Routines from './routines';
-import Add from './add';
+import Header from './components/header';
+import Routines from './pages/routines';
+import Add from './pages/add';
 
 const client = new ApolloClient({
   uri: 'http://localhost:4000/',
