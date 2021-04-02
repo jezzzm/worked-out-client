@@ -1,6 +1,33 @@
-import * as React from 'react';
-import * as ReactDOM from 'react-dom';
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { Switch, Route, BrowserRouter as Router } from 'react-router-dom';
+import { ApolloClient, InMemoryCache, ApolloProvider } from '@apollo/client';
 
-const Greet = () => <h1>Hello, world!</h1>;
+import Header from './header';
+import Routines from './routines';
+import Add from './add';
 
-ReactDOM.render(<Greet />, document.getElementById('root'));
+const client = new ApolloClient({
+  uri: 'http://localhost:4000/',
+  cache: new InMemoryCache()
+});
+
+
+const App = () => (
+  <ApolloProvider client={client}>
+    <Router>
+      <Header />
+      <Switch>
+        <Route path="/routines">
+          <Routines />
+
+        </Route>
+        <Route path="/add">
+          <Add />
+        </Route>
+      </Switch>
+    </Router>
+  </ApolloProvider>
+);
+
+ReactDOM.render(<App />, document.getElementById('root'));
